@@ -22,3 +22,21 @@ class Solution(object):
             if len(item) > max_len:
                 max_len = len(item)
         return max_len
+
+#
+
+class Solution(object):
+    def maxPower(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        max_power = 1
+        power = 1
+        for i in range(1,len(s)):
+            if s[i] == s[i-1]:
+                power+=1
+                max_power = max([power,max_power])
+            else:
+                power = 1
+        return max_power
