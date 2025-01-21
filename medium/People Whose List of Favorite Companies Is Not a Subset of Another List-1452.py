@@ -25,10 +25,9 @@ class Solution:
             isSubset=False
             for j in range(len(favoriteCompanies)):
                 if i!=j:
-                    if len(dictionary[i].difference(dictionary[j]))==0:
+                    if dictionary[i].issubset(dictionary[j]):
                         isSubset=True
                         break
             if isSubset==False:
                 ans.append(i)
         return ans
-
