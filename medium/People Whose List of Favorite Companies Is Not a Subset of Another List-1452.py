@@ -13,3 +13,22 @@ class Solution:
             if isSubset==False:
                 ans.append(i)
         return ans
+
+#
+
+class Solution:
+    def peopleIndexes(self, favoriteCompanies: List[List[str]]) -> List[int]:
+        ans=[]
+        dictionary = {i:set(arr) for i,arr in enumerate(favoriteCompanies)}
+
+        for i in range(len(favoriteCompanies)):
+            isSubset=False
+            for j in range(len(favoriteCompanies)):
+                if i!=j:
+                    if len(dictionary[i].difference(dictionary[j]))==0:
+                        isSubset=True
+                        break
+            if isSubset==False:
+                ans.append(i)
+        return ans
+
