@@ -16,4 +16,21 @@ class Solution(object):
             return False        
         return True
 
+#
+
+class Solution:
+    def isAnagram(self, s: str, t: str) -> bool:
+        shash={}
+        thash={}
+        for c in s:
+            if c in shash:
+                shash[c]+=1
+            else:
+                shash[c]=1
+        for c in t:
+            if c in thash:
+                thash[c]+=1
+            else:
+                thash[c]=1
+        return shash==thash
         
