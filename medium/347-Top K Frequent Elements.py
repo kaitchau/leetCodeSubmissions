@@ -36,3 +36,24 @@ class Solution:
                 ans.append(item)
         return ans[-k:]
         
+#
+
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        freqs = {}
+        for n in nums:
+            if n in freqs:
+                freqs[n]+=1
+            else:
+                freqs[n]=1
+        max_freq = max(freqs.values())
+        buckets = [[] for _ in range(max_freq+1)]
+        for n in freqs:
+            buckets[freqs[n]].append(n)
+        print(buckets)
+        ans=[]
+        for i in range(max_freq,0,-1):
+            for item in buckets[i]:
+                ans.append(item)
+                if len(ans)==k:
+                    return ans
