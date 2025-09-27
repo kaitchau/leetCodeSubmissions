@@ -32,4 +32,33 @@ class Solution:
                 ct=0
                 subbox=[[],[],[]]
         return True
-            
+
+#
+
+class Solution:
+    def isValidSudoku(self, board: List[List[str]]) -> bool:
+        cols = [""]*9
+        boxes = [["","",""],["","",""],["","",""]]
+        #print(boxes)
+        for i in range(9):
+            row = ""
+            for j in range(9):
+                if board[i][j].isdigit():
+                    row+=board[i][j]
+                    cols[j]+=board[i][j]
+                    #print(str(i//3)+","+str(j//3))
+                    boxes[i//3][j//3]+=board[i][j]
+            if len(row) != len(set(row)):
+                #print(row)
+                return False
+        for col in cols:
+            if len(col) != len(set(col)):
+                #print(col)
+                return False
+        #print(boxes)
+        for boxes2 in boxes:
+            for box in boxes2:
+                if len(box) != len(set(box)):
+                    #print(box)
+                    return False
+        return True
